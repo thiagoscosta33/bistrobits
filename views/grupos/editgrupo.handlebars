@@ -1,0 +1,31 @@
+{{#each erros}}
+<div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+<div class="card mt-4">
+    <div class="card-header">
+        <h4>Editar grupos</h4>
+    </div>
+    <div class="card-body">
+        <form action="/grupos/edit" method="post">
+            <div class="mb-3">
+                <input type="hidden" name="id" value="{{grupo._id}}">
+                <label for="descricao">descrição:</label>
+                <input type="text" id="descricao" name="descricao" placeholder="descricao do grupo" class="form-control"
+                    value="{{grupo.descricao}}">
+            </div>
+            <div class="input-group mb-3">
+                <div class="form-check form-switch">
+                    <input type="checkbox" id="listarNoCardapio" name="listarNoCardapio" class="form-check-input" {{#if
+                        grupo.listarNoCardapio}}checked{{/if}}>
+                    <label class="form-check-label" for="listarNoCardapio">Listar no Cardápio</label>
+                </div>
+            </div>
+            <div class="btn-group mt-4">
+                 <button type="submit" class="btn btn-primary">Alterar grupo</button>
+                 <a href="/grupos" class="btn btn-outline-secondary">Fechar</a>
+            </div>  
+        </form>
+    </div>
+</div>

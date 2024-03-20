@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="bt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <meta name="theme-color" content="#0078d4">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+  <link rel="manifest" href="/public/service/manifest.json">  
+  <style>
+    :root {
+      --cor-main: #0078d4;
+    }
+
+    .full-width {
+      height: 100vh;
+    }
+
+    .card-max-width {
+      max-width: calc(100vw - 20px);
+      overflow-x: auto;
+    }
+
+    .navbar-fixed-top {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: var(--cor-main) !important;
+      border-bottom-style: solid;
+      border-width: 1px;
+      border-color: #045da1;
+      z-index: 3000;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: whitesmoke !important;
+      padding: 15px 0;
+    }
+
+    .btn {
+      margin-right: 10px;
+    }
+  </style>
+  <title>BistroBits - Cardápios online</title>
+</head>
+
+<body style="background-color: #eaeaea">
+  <nav class="navbar navbar-expand-lg navbar-fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="/public/img/logo2.png" alt="Logomarca do BistroBits"
+          style="height: 30px; width: auto; margin-right: 5px;">
+      </a>
+    </div>
+  </nav>
+  <div class="container full-width" style="margin-top: 80px;">
+    {{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+    {{/if}}
+    {{>_msg}}
+    {{>_confirmModal}}
+    {{{body}}}
+  </div>
+
+  <footer>
+    <div class="container text-center">
+      <button class="btn  btn-light btn-sm" id="action2"><i class="fas fa-2x fa-star-half-alt"></i><br>Avaliar atendimento</button>
+      <button class="btn  btn-light btn-sm" id="action1"><i class="fas fa-2x fa-bell"></i><br>Chamar atendente</button>
+    </div>
+  </footer>
+</body>
+
+<script src="/jquery/jquery.min.js"></script>
+<script src="/popper/umd/popper.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vanilla-masker/vanilla-masker.min.js"></script>
+
+</html>

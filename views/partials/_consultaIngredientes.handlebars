@@ -1,0 +1,48 @@
+<div class="modal" id="consultaIngredientesModal">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Consulta ingredientes</h4>
+            </div>
+
+            <div class="modal-body">
+                <ul class="list-group" id="listaIngredientes"></ul>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+        $(document).ready(function () {
+            $.ajax({
+                url: '/ingredientes/obter_ingredientes',
+                method: 'GET',
+                success: function (data) {
+                    let listaIngredientes = $('#listaIngredientes');
+                    data.forEach(function (ingrediente) {
+                        let li = $('<li class="list-group-item d-flex justify-content-between align-items-center"></li>');
+                        li.text(ingrediente.descricao);
+                        let botao = $('<button type="button" class="btn btn-primary ingr-selected">Adicionar</button>');
+                        botao.attr('data-ingrediente-id', ingrediente._id);
+                        li.append(botao);
+                        listaIngredientes.append(li);
+                    });
+
+                },
+                error: function (xhr, status, error) {
+                    console.error('Erro ao obter os ingredientes:', error);
+                }
+            });
+        });
+    });
+
+
+</script>

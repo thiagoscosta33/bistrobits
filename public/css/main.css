@@ -1,0 +1,50 @@
+.custom-color-blue{
+    color: #0067b8;
+}
+
+.card {
+    height: 100%;
+}
+
+.card-footer{
+    border-top: none;
+    background-color: white;
+}
+
+.col {
+    margin-bottom: 20px; 
+}
+
+.custom-btn {
+    min-width: 200px;
+}
+
+.custom-align-right{
+    text-align: right;
+}
+
+.custom-bg-purple{
+    background-color: #1621ea12;
+}
+
+.search-bg-color{
+   background-color: #bac !important;
+}
+
+
+.border-left-rounded {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+.btn-primary {
+    background-color: #0067b8;
+    border-color: #0067b8;
+    color: #fff; 
+}
+
+.btn-primary:focus {
+    color: #fff;
+}
+
+

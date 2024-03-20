@@ -1,0 +1,42 @@
+<div class="row mt-4">
+  <div class="col col-xs-12 col-md-6">
+    <h3>Lista de ingredientes</h3>
+  </div>
+  <div class="col col-xs-12 col-md-6">
+    <form action="/ingredientes/pesquisar" method="GET" class="form-inline">
+      <div class="mb-3">        
+        <div class="input-group">          
+          <input type="text" name="searchGrupo" class="form-control border-end-0 border"
+            placeholder="Pesquisar ingredientes...">
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-primary border-start-0 border-left-rounded"><i
+                class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+<hr>
+<a href="/ingredientes/add" class="btn btn-primary">Adicionar</a>
+{{#each ingredientes}}
+  <div class="card mt-3">
+    <div class="card-body">
+      <div class="row">
+        <div class="col col-xs-12 col-md-8">
+          <h5>{{this.descricao}}</h5>         
+        </div>
+        <div class="col col-xs-12 col-md-4 custom-align-right">
+          <a href="/ingredientes/edit/{{_id}}"><button class="btn btn-primary custom-btn mt-3">Editar ingrediente</button></a>
+          <form action="/ingredientes/deletar" method="post">
+            <input type="hidden" name="id" value="{{_id}}">
+            <button type="submit" class="btn btn-danger custom-btn mt-2">Deletar ingrediente</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{else}}
+  <h4 class="mt-4">Nenhum ingrediente registrado</h4>
+  {{/each}}

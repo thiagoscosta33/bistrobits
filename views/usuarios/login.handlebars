@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/public/css/login.css">
+<div class="container d-flex justify-content-center align-items-center vh-100">
+<div class="container-login">
+  {{#each erros}}
+  <div class="alert alert-danger">{{texto}}</div>
+  {{else}}
+
+  {{/each}}
+
+  <main class="form-signin mt-5" style="background-color: transparent;">
+    <form action="/usuarios/login" method="post">
+      <div class="container text-center mb-3">
+        <img src="/public/img/logo.png" alt="Logomarca do BistroBits" style="height: 60px; width: auto;">
+      </div>
+      <h4 class="mb-3 text-center text-muted">Por favor informe</h4>
+
+      <div class="form-floating">
+        <input type="email" class="form-control" name="email" id="email" placeholder="nome@exemplo.com">
+        <label for="email">Endereço de Email</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha">
+        <label for="senha">Senha</label>
+      </div>
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="lembre-me"> Lembre me
+        </label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Logar</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2024–2024</p>
+    </form>
+  </main>
+</div>
+</div>

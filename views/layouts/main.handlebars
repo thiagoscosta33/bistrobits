@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="bt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">    
+    <link rel="stylesheet" href="/public/css/main.css">     
+    <link rel="stylesheet" href="/public/css/customNav.css">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BistroBits - Cardápios</title>
+</head>
+<body style="background-color: #eaeaea">
+    {{>_navbar}}
+    <div class="container">
+      {{#if error}}
+      <div class="alert alert-danger">{{error}}</div>
+      {{/if}}   
+      {{>_msg}}      
+      {{>_confirmModal}}            
+      {{{body}}}
+    </div>
+</body>
+
+<script src="/jquery/jquery.min.js"></script>
+<script src="/popper/umd/popper.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vanilla-masker/vanilla-masker.min.js"></script>
+</html>

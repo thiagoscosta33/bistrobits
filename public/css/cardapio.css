@@ -1,0 +1,40 @@
+.card-max-width {
+  max-width: calc(100vw - 20px);
+  overflow-x: auto;
+}
+
+.product-image {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.fixed-container {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: var(--cor-main) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.last-group-container {
+  min-height: calc(100vh - 100px);
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 0.25rem;
+  color: var(--bs-card-color);
+}
+
+.card-p{
+  padding: 1.25rem;
+}
+
+.group-card {
+  background-color: #0276ce;
+  border-style: none;
+  color: white;
+}
+

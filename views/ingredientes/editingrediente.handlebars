@@ -1,0 +1,24 @@
+{{#each erros}}
+<div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+<div class="card mt-4">
+    <div class="card-header">
+        <h4>Editar ingredientes</h4>
+    </div>
+    <div class="card-body">
+        <form action="/ingredientes/edit" method="post">
+            <div class="mb-3">
+                <input type="hidden" name="id" value="{{ingrediente._id}}">
+                <label for="descricao">descrição:</label>
+                <input type="text" id="descricao" name="descricao" placeholder="descricao do ingrediente" class="form-control"
+                    value="{{ingrediente.descricao}}">
+            </div>            
+            <div class="btn-group mt-4">
+                 <button type="submit" class="btn btn-primary">Alterar ingrediente</button>
+                 <a href="/ingredientes" class="btn btn-outline-secondary">Fechar</a>
+            </div>  
+        </form>
+    </div>
+</div>

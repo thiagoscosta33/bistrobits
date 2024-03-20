@@ -1,0 +1,70 @@
+<div class="row mt-4">
+  <div class="col col-xs-12 col-md-6">
+    <h3>Lista de produtos</h3>
+  </div>
+  <div class="col col-xs-12 col-md-6">
+    <form action="/produtos/pesquisar" method="GET" class="form-inline">
+      <div class="mb-3">
+        <div class="input-group">
+          <input type="text" name="searchproduto" class="form-control border-end-0 border"
+            placeholder="Pesquisar produtos...">
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-primary border-start-0 border-left-rounded"><i
+                class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+<hr>
+<a href="/produtos/add" class="btn btn-primary">Adicionar</a>
+{{#each produtos}}
+<div class="card mt-3">
+  <div class="row g-0">
+    <div class="col-12 col-sm-4 col-md-3 text-center">
+      {{#if this.fotos}}
+      <img src="uploads/{{this.fotos.[0]}}" alt="Imagem do Produto" class="img-fluid rounded-start"
+        style="max-width: 200px;">
+      {{else}}
+      <img src="/public/img/no-image.png" alt="Imagem do Produto" class="img-fluid rounded-start"
+        style="max-width: 200px;">
+      {{/if}}
+    </div>
+    <div class="col-12 col-sm-8 col-md-9">
+      <div class="card-body">
+        <h5 class="card-title">{{this.descricao}}</h5>
+        <p class="card-text"><small class="text-muted">Ingredientes:
+            {{#each this.ingredientes}}
+            {{this.descricao}}
+            {{#unless @last}}, {{/unless}}
+            {{/each}}
+          </small>
+          <br>
+          <small class="text-muted">Listar no cardápio: {{#if
+            this.listarNoCardapio}}Sim{{else}}Não{{/if}}</small>
+        </p>
+        <p class="card-text"></p>
+
+        <div class="row">
+          <div class="col-6">
+            <blockquote class="blockquote mb-0">
+              <p>Preço: {{this.precoFormatado}}</p>
+            </blockquote>
+          </div>
+          <div class="col-6">
+            <form action="/produtos/deletar" method="post" class="btn-group mb-3" style="float: right;">
+              <a href="/produtos/edit/{{_id}}" class="btn btn-primary">Editar</a>
+              <input type="hidden" name="idProduto" value="{{_id}}">
+              <button type="submit" class="btn btn-danger">Deletar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{else}}
+<h4 class="mt-4">Nenhum produto registrado</h4>
+{{/each}}

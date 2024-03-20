@@ -1,0 +1,41 @@
+#lista-fotos {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.foto-miniatura {
+    width: 100px;
+    height: auto;
+}
+
+img,
+svg {
+    vertical-align: top !important;
+}
+
+.foto-container {
+    margin-left: 20px;
+}
+
+.remover-foto {
+    margin-left: 0px;
+}
+
+.foto-container {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #c7c9ca;
+    padding: 15px;
+}
+
+.desktop-thumbnail {
+    max-width: 200px;
+    height: auto;
+}
+
+@media (max-width: 767px) {
+    .mobile-max-img {
+        max-width: 100%;
+        max-height: 200px;
+    }
+}

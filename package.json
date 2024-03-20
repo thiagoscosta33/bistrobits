@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "bootstrap": "^5.3.1",
+    "connect-flash": "^0.1.1",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "express-session": "^1.17.3",
+    "jquery": "^3.7.0",
+    "money": "^0.2.0",
+    "money-math": "^2.6.2",
+    "mongoose": "^7.4.3",
+    "multer": "^1.4.5-lts.1",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "popper.js": "^1.16.1",
+    "vanilla-masker": "^1.2.0"
+  },
+  "scripts": {
+    "test": "jest --passWithNoTests --detectOpenHandles",
+    "start": "node app.js"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.4"
+  }
+}

@@ -1,0 +1,11 @@
+
+.navbar-text-custom{
+    font-size: 1.00rem;
+    font-weight: var(---bs-navbar-color);
+    color: var(--bs-navbar-hover-color);
+}
+
+.bg-body-tertiary {
+    --bs-bg-opacity: 1;
+    background-color: whitesmoke !important;
+}

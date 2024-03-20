@@ -1,0 +1,104 @@
+<link rel="stylesheet" href="/public/css/fotosProduto.css">
+
+{{#each erros}}
+<div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+<div class="card mt-4">
+    <div class="card-header">
+        <h4>Editar produtos</h4>
+    </div>
+    <div class="card-body">
+        <form action="/produtos/edit" method="post" id="formularioProduto">
+
+            <input type="hidden" id="nomeDasImagens" name="nomeDasImagens">
+            <input type="hidden" id="ingredientes" name="ingredientes">
+
+
+            <div class="input-group mb-3">
+                <div class="form-check form-switch">
+                    <input type="checkbox" id="listarNoCardapio" name="listarNoCardapio" class="form-check-input" {{#if produto.listarNoCardapio}}checked{{/if}}>
+                    <label class="form-check-label" for="listarNoCardapio">Listar no Cardápio</label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <input type="hidden" id="idProduto" name="idProduto" value="{{produto._id}}">
+                <label for="descricao">descrição:</label>
+                <input type="text" id="descricao" name="descricao" placeholder="descricao do produto"
+                    class="form-control" value="{{produto.descricao}}">
+            </div>
+            <div class="mb-3">
+                <label for="preco" class="form-label">Preço:</label>
+                <div class="input-group">
+                    <span class="input-group-text">R$</span>
+                    <input type="text" id="preco" name="preco" placeholder="Preço do produto" class="form-control"
+                        value="{{produto.precoFormatado}}">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="grupo" class="form-label">Grupo:</label>
+                <select class="form-select" aria-label="Default select" id="grupo" name="grupo">
+                    <option selected value="0">Selecione o grupo</option>
+                    {{#each grupos}}
+                    <option value="{{_id}}" {{#if (eq _id ../produto.grupo)}}selected{{/if}}>{{descricao}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <button type="button" id="btnAdicionarIngrediente" class="btn btn-primary mt-3" data-bs-toggle="modal"
+                data-bs-target="#consultaIngredientesModal">Adicionar Ingrediente</button>
+
+            <ul class="list-group mt-3" id="listaIngredientesdoProduto">
+                {{#each produto.ingredientes}}
+                <li class="list-group-item d-flex justify-content-between align-items-center"
+                    data-ingrediente-id="{{this._id}}">
+                    {{this.descricao}}
+                    <button type="button" class="btn btn-danger ingr-into-list"
+                        data-ingrediente-id="{{this._id}}">Remover</button>
+                </li>
+                {{/each}}
+            </ul>
+
+            <div class="mt-3 mb-3">
+                <label for="fotos" class="form-label">Fotos:</label>
+                <div class="input-group">
+                    <input type="file" id="fotos" name="fotos" class="form-control" multiple accept="image/*">
+                </div>
+            </div>
+
+            <div id="lista-fotos" class="mt-3">
+                {{#each produto.fotos}}
+                <div class="foto-container">
+                    <img src="/uploads/{{this}}" class="foto-miniatura" data-nome-arquivo="{{this}}">
+                    <i class="fas fa-trash-alt remover-foto" aria-hidden="true" onclick="removerFoto(event);"></i>
+                </div>
+                {{/each}}
+            </div>
+            <div class="btn-group mt-4">
+                <button type="submit" class="btn btn-primary">Alterar produto</button>
+                <a href="/produtos" class="btn btn-outline-secondary">Fechar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{>_consultaIngredientes}}
+
+{{#if produto}}
+<script>
+    const limiteTotalFotos = 5;
+    let nomesImagens = '{{produto.fotos}}'.split(',');
+    let totalFotos = {{ produto.fotos.length }};
+    document.getElementById('nomeDasImagens').value = JSON.stringify(nomesImagens);
+</script>
+{{else}}
+<script>
+    const limiteTotalFotos = 5;
+    let nomesImagens = [];
+    let totalFotos = 0;    
+</script>
+{{/if}}
+
+<script src="/public/js/Produto.js"></script>
