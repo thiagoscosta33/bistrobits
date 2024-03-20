@@ -38,43 +38,43 @@ Acesse o Bistrobits em seu navegador usando o endereço [Localhost](http://local
 
 **Estrutura do Projeto:**
 
-bistrobits/
-│
-├── .vscode/        # Configurações do Visual Studio Code
-├── app/            # Código da aplicação
-├── bistrobits/     # Configurações principais do projeto
-├── certs/          # Certificados e chaves de segurança
-├── config/         # Arquivos de configuração
-├── data/           # Dados estáticos
-│   ├── diagnostic.data/
-│   └── journal/
-├── helpers/        # Funções auxiliares
-├── middlewares/    # Middlewares da aplicação
-├── models/         # Modelos de dados
-├── node_modules/   # Dependências do projeto (geradas pelo npm)
-├── public/         # Arquivos públicos (HTML, CSS, imagens, etc.)
-│   ├── css/
-│   ├── img/
-│   ├── js/
-│   └── service/
-├── routers/        # Roteadores da aplicação
-├── uploads/        # Arquivos de upload
-├── utils/          # Utilitários
-└── views/          # Arquivos de visualização (views)
-    ├── admin/
-    ├── cardapios/
-    ├── grupos/
-    ├── ingredientes/
-    ├── layouts/
-    ├── offline/
-    ├── partials/
-    ├── produtos/
-    ├── usuarios/
-    ├── welcome/
-    └── 
-└── __tests__/   # Testes do sistema
-        ├── integration/
-        └── unitarias/
+bistrobits/                                                                <br>
+│                                                                          <br>
+├── .vscode/        # Configurações do Visual Studio Code                  <br>
+├── app/            # Código da aplicação                                  <br>
+├── bistrobits/     # Configurações principais do projeto                  <br> 
+├── certs/          # Certificados e chaves de segurança                   <br>
+├── config/         # Arquivos de configuração                             <br>
+├── data/           # Dados estáticos                                      <br> 
+│   ├── diagnostic.data/                                                   <br>      
+│   └── journal/                                                           <br>
+├── helpers/        # Funções auxiliares                                   <br>
+├── middlewares/    # Middlewares da aplicação                             <br>
+├── models/         # Modelos de dados                                     <br>
+├── node_modules/   # Dependências do projeto (geradas pelo npm)           <br> 
+├── public/         # Arquivos públicos (HTML, CSS, imagens, etc.)         <br> 
+│   ├── css/                                                               <br>
+│   ├── img/                                                               <br> 
+│   ├── js/                                                                <br> 
+│   └── service/                                                           <br>
+├── routers/        # Roteadores da aplicação                              <br>
+├── uploads/        # Arquivos de upload                                   <br>
+├── utils/          # Utilitários                                          <br> 
+└── views/          # Arquivos de visualização (views)                     <br> 
+    ├── admin/                                                             <br> 
+    ├── cardapios/                                                         <br>
+    ├── grupos/                                                            <br>
+    ├── ingredientes/                                                      <br>
+    ├── layouts/                                                           <br> 
+    ├── offline/                                                           <br>
+    ├── partials/                                                          <br>
+    ├── produtos/                                                          <br>
+    ├── usuarios/                                                          <br>  
+    ├── welcome/                                                           <br>
+    └──                                                                    <br>
+└── __tests__/   # Testes do sistema                                       <br>
+        ├── integration/                                                   <br> 
+        └── unitarias/                                                     <br> 
 
 
 **Tecnologias Utilizadas:**
