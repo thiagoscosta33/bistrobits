@@ -20,6 +20,25 @@ router.get("/", eAdmin, (req, res) => {
     })
 })
 
+router.get('/pesquisar', eAdmin, (req, res) => {
+    let searchQuery = req.query.searchIngrediente;
+  
+    searchQuery = searchQuery.toLowerCase();
+  
+    const searchFilter = searchQuery ? { descricao: { $regex: new RegExp(searchQuery, 'i') } } : {};
+  
+    Ingrediente.find(searchFilter)
+      .sort({ descricao: 'asc' })
+      .then((ingredientes) => {
+        const jsonIngredientes = JSON.parse(JSON.stringify(ingredientes))
+        res.render("ingredientes/ingrediente", { ingredientes: jsonIngredientes })
+      })
+      .catch((err) => {
+        req.flash('error_msg', 'Houve um erro ao listar os ingredientes');
+        res.redirect('/');
+      });
+  });
+
 router.get("/obter_ingredientes", eAdmin, (req, res) => {
     Ingrediente.find().sort({ descricao: 'asc' }).then((ingredientes) => {
         res.json(ingredientes);
