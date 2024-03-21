@@ -20,12 +20,12 @@ const {validarProduto} = require('../middlewares/validationMiddleware');
 
 const { enviarMensagemFlash, converterPreco } = require('../utils/util');
 
-
 router.get('/', eAdmin, (req, res) => {
   Produto.find().sort({ descricao: 'asc' }).populate('ingredientes').then((produtos) => {
     const produtosComPrecoFormatado = produtos.map(produto => {
       const precoFormatado = produto.preco ? `R$ ${produto.preco.toString().replace('.', ',')}` : null;
-      return { ...produto.toObject(), precoFormatado: precoFormatado };
+      const imagemURL = produto.fotos && produto.fotos.length > 0 ? `./uploads/${produto.fotos[0]}` : '/public/img/no-image.png';
+      return { ...produto.toObject(), precoFormatado: precoFormatado, imagemURL: imagemURL };
     });
     res.render("produtos/produto", { produtos: produtosComPrecoFormatado });
   }).catch((err) => {
@@ -33,6 +33,32 @@ router.get('/', eAdmin, (req, res) => {
     res.redirect("/")
   })
 })
+
+router.get('/pesquisar', eAdmin, (req, res) => {
+  let searchQuery = req.query.searchproduto; 
+
+  searchQuery = searchQuery.toLowerCase();
+
+  const searchFilter = searchQuery ? { descricao: { $regex: new RegExp(searchQuery, 'i') } } : {};
+
+  Produto.find(searchFilter)
+    .sort({ descricao: 'asc' })
+    .populate('ingredientes')
+    .then((produtos) => {
+      const produtosComPrecoFormatado = produtos.map((produto) => {
+        const precoFormatado = produto.preco ? `R$ ${produto.preco.toString().replace('.', ',')}` : null;
+        const imagemURL = produto.fotos && produto.fotos.length > 0 ? `./../uploads/${produto.fotos[0]}` : '/public/img/no-image.png';
+        return { ...produto.toObject(), precoFormatado: precoFormatado, imagemURL: imagemURL };
+      });
+      res.render('produtos/produto', { produtos: produtosComPrecoFormatado });
+    })
+    .catch((err) => {
+      req.flash('error_msg', 'Houve um erro ao listar os produtos');
+      res.redirect('/');
+    });
+});
+
+
 
 router.get('/add', eAdmin, (req, res) => {
   Grupo.find().sort({ descricao: 'asc' }).then((grupos) => {
