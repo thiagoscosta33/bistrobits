@@ -20,6 +20,25 @@ router.get('/', eAdmin, (req, res) => {
   })
 })
 
+router.get('/pesquisar', eAdmin, (req, res) => {
+  let searchQuery = req.query.searchGrupo;
+
+  searchQuery = searchQuery.toLowerCase();
+
+  const searchFilter = searchQuery ? { descricao: { $regex: new RegExp(searchQuery, 'i') } } : {};
+
+  Grupo.find(searchFilter)
+    .sort({ descricao: 'asc' })
+    .then((grupos) => {
+      const jsonGrupos = JSON.parse(JSON.stringify(grupos))
+      res.render("grupos/grupo", { grupos: jsonGrupos })
+    })
+    .catch((err) => {
+      req.flash('error_msg', 'Houve um erro ao listar os grupos');
+      res.redirect('/');
+    });
+});
+
 router.get('/add', eAdmin, (req, res) => {
   res.render("grupos/addgrupo")
 })
