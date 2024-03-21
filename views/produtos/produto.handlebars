@@ -24,8 +24,8 @@
 <div class="card mt-3">
   <div class="row g-0">
     <div class="col-12 col-sm-4 col-md-3 text-center">
-      {{#if this.fotos}}
-      <img src="uploads/{{this.fotos.[0]}}" alt="Imagem do Produto" class="img-fluid rounded-start"
+      {{#if this.imagemURL}}
+      <img src="{{this.imagemURL}}" alt="Imagem do Produto" class="img-fluid rounded-start"
         style="max-width: 200px;">
       {{else}}
       <img src="/public/img/no-image.png" alt="Imagem do Produto" class="img-fluid rounded-start"
